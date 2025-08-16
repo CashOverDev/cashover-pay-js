@@ -1,5 +1,10 @@
-const CashOverConstants = {
-  defaultButtonBackgroundColor: "#000000",
-  defaultTextColor: "#FFFFFF",
-  defaultFontSize: "16px",
+export const ButtonDefaults = {
+  backgroundColor: "#000000",
+  textColor: "#FFFFFF",
+  fontSize: "16px",
+  fontWeight: "600",
+  padding: "12px 24px",
+  borderRadius: "8px",
+  border: "none",
+  cursor: "pointer",
 };

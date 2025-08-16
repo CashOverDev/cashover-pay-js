@@ -24,7 +24,30 @@
     }
   }
 
-  // CashOverPayButton.js
+  const ButtonDefaults = {
+    backgroundColor: "#000000",
+    textColor: "#FFFFFF",
+    fontSize: "16px",
+    fontWeight: "600",
+    padding: "12px 24px",
+    borderRadius: "8px",
+    border: "none",
+    cursor: "pointer",
+  };
+
+  const languages = {
+    en: { buy_with: "Buy with CashOver" },
+    fr: { buy_with: "Achetez avec CashOver" },
+    ar: { buy_with: "اشتري باستخدام CashOver" },
+  };
+
+  class CashOverLocalization {
+    static translate(key, language = navigator.language.slice(0, 2)) {
+      if (!languages[language]) language = "en";
+      return languages[language][key] || languages["en"][key] || key;
+    }
+  }
+
   class CashOverPayButton extends HTMLElement {
     constructor() {
       super();
@@ -33,7 +56,20 @@
 
     connectedCallback() {
       const button = document.createElement("button");
-      button.textContent = this.getAttribute("label") || "Pay with CashOver";
+
+      button.textContent = CashOverLocalization.translate("buy_with");
+
+      // Apply styles from constants
+      button.style.backgroundColor = ButtonDefaults.backgroundColor;
+      button.style.color = ButtonDefaults.textColor;
+      button.style.fontSize = ButtonDefaults.fontSize;
+      button.style.fontWeight = ButtonDefaults.fontWeight;
+      button.style.padding = ButtonDefaults.padding;
+      button.style.borderRadius = ButtonDefaults.borderRadius;
+      button.style.border = ButtonDefaults.border;
+      button.style.cursor = ButtonDefaults.cursor;
+
+      // Payment click handler
       button.addEventListener("click", () => {
         CashOverPayService.instance.pay({
           merchantUsername: this.getAttribute("merchantUsername"),
