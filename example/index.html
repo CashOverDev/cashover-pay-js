@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CashOver SDK Demo</title>
+  </head>
+  <body>
+    <h1>CashOver SDK Demo</h1>
+
+    <!-- Using the SDK button -->
+    <cashover-pay-button
+      merchantUsername="merchant123"
+      storeUsername="store456"
+      amount="49.99"
+      currency="USD"
+      metadata='{"orderId":"A1001"}'
+      label="Pay with CashOver"
+    >
+    </cashover-pay-button>
+
+    <!-- Include the built SDK -->
+    <script src="../dist/cashover.min.js"></script>
+
+    <script>
+      // No internal services are exposed.
+      // User just uses the <cashover-pay-button> tag.
+      console.log(
+        "CashOver Button Ready:",
+        document.querySelector("cashover-pay-button")
+      );
+    </script>
+  </body>
+</html>
