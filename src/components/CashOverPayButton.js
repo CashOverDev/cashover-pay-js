@@ -9,22 +9,22 @@ class CashOverPayButton extends HTMLElement {
   }
 
   connectedCallback() {
-    const button = document.createElement("button");
+    const cashOverButton = document.createElement("button");
 
-    button.textContent = CashOverLocalization.translate("buy_with");
+    cashOverButton.textContent = CashOverLocalization.translate("buy_with");
 
     // Apply styles from constants
-    button.style.backgroundColor = ButtonDefaults.backgroundColor;
-    button.style.color = ButtonDefaults.textColor;
-    button.style.fontSize = ButtonDefaults.fontSize;
-    button.style.fontWeight = ButtonDefaults.fontWeight;
-    button.style.padding = ButtonDefaults.padding;
-    button.style.borderRadius = ButtonDefaults.borderRadius;
-    button.style.border = ButtonDefaults.border;
-    button.style.cursor = ButtonDefaults.cursor;
+    cashOverButton.style.backgroundColor = ButtonDefaults.backgroundColor;
+    cashOverButton.style.color = ButtonDefaults.textColor;
+    cashOverButton.style.fontSize = ButtonDefaults.fontSize;
+    cashOverButton.style.fontWeight = ButtonDefaults.fontWeight;
+    cashOverButton.style.padding = ButtonDefaults.padding;
+    cashOverButton.style.borderRadius = ButtonDefaults.borderRadius;
+    cashOverButton.style.border = ButtonDefaults.border;
+    cashOverButton.style.cursor = ButtonDefaults.cursor;
 
     // Payment click handler
-    button.addEventListener("click", () => {
+    cashOverButton.addEventListener("click", () => {
       CashOverPayService.instance.pay({
         merchantUsername: this.getAttribute("merchantUsername"),
         storeUsername: this.getAttribute("storeUsername"),
@@ -34,7 +34,7 @@ class CashOverPayButton extends HTMLElement {
       });
     });
 
-    this.shadowRoot.appendChild(button);
+    this.shadowRoot.appendChild(cashOverButton);
   }
 }
 
