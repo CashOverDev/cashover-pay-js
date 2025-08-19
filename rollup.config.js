@@ -1,4 +1,5 @@
 import terser from "@rollup/plugin-terser";
+import url from "@rollup/plugin-url";
 
 export default {
   input: "src/index.js",
@@ -6,7 +7,7 @@ export default {
     {
       file: "dist/cashover.js",
       format: "iife",
-      name: "CashOver", // global namespace for browser
+      name: "CashOver",
     },
     {
       file: "dist/cashover.min.js",
@@ -14,5 +15,13 @@ export default {
       name: "CashOver",
       plugins: [terser()],
     },
+  ],
+  plugins: [
+    url({
+      limit: 0, // Never inline
+      include: ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.svg"],
+      emitFiles: true,
+      fileName: "[name][extname]", // Keep original filename
+    }),
   ],
 };

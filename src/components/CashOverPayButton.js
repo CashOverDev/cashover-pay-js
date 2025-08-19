@@ -1,6 +1,7 @@
 import { CashOverPayService } from "../services/CashOverPayService";
 import { ButtonDefaults } from "../constants";
 import { CashOverLocalization } from "../utils/localization";
+import cashOverLogo from "../assets/cashover_logo.png";
 
 class CashOverPayButton extends HTMLElement {
   constructor() {
@@ -11,7 +12,36 @@ class CashOverPayButton extends HTMLElement {
   connectedCallback() {
     const cashOverButton = document.createElement("button");
 
-    cashOverButton.textContent = CashOverLocalization.translate("buy_with");
+    // Create container for button content
+    const buttonContent = document.createElement("div");
+    buttonContent.style.display = "flex";
+    buttonContent.style.alignItems = "center";
+    buttonContent.style.justifyContent = "center";
+    buttonContent.style.gap = "0.5px";
+
+    // Create CASH text
+    const cashText = document.createElement("span");
+    cashText.textContent = "CASH";
+
+    // Create image element
+    const buttonImage = document.createElement("img");
+    buttonImage.src = "../dist/cashover_logo.png";
+    buttonImage.alt = "CashOver";
+    buttonImage.style.width = ButtonDefaults.imageSize;
+    buttonImage.style.height = ButtonDefaults.imageSize;
+    buttonImage.style.objectFit = "contain";
+
+    // Create VER PAY text
+    const verPayText = document.createElement("span");
+    verPayText.textContent = `VER ${CashOverLocalization.translate("pay")}`;
+
+    // Append elements to button content
+    buttonContent.appendChild(cashText);
+    buttonContent.appendChild(buttonImage);
+    buttonContent.appendChild(verPayText);
+
+    // Append content to button
+    cashOverButton.appendChild(buttonContent);
 
     // Apply styles from constants
     cashOverButton.style.backgroundColor = ButtonDefaults.backgroundColor;
@@ -39,4 +69,5 @@ class CashOverPayButton extends HTMLElement {
 }
 
 customElements.define("cashover-pay-button", CashOverPayButton);
+
 export default CashOverPayButton;

@@ -1,7 +1,7 @@
 const languages = {
-  en: { buy_with: "Buy with CashOver" },
-  fr: { buy_with: "Achetez avec CashOver" },
-  ar: { buy_with: "اشتري باستخدام CashOver" },
+  en: { pay: "PAY" },
+  fr: { pay: "PAY" },
+  ar: { pay: "PAY" },
 };
 
 export class CashOverLocalization {

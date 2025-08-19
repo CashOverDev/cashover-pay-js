@@ -7,4 +7,5 @@ export const ButtonDefaults = {
   borderRadius: "8px",
   border: "none",
   cursor: "pointer",
+  imageSize: "16px",
 };
