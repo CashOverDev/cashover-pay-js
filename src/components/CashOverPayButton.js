@@ -31,10 +31,18 @@ class CashOverPayButton extends HTMLElement {
     buttonImage.style.width = ButtonDefaults.imageSize;
     buttonImage.style.height = ButtonDefaults.imageSize;
     buttonImage.style.objectFit = "contain";
+    const language = this.getAttribute("language") ?? "en";
+    const fontSize = this.getAttribute("fontSize") ?? ButtonDefaults.fontSize;
+    const theme = this.getAttribute("theme") ?? "light";
+    const borderRadius =
+      this.getAttribute("borderRadius") ?? ButtonDefaults.borderRadius;
 
     // Create VER PAY text
     const verPayText = document.createElement("span");
-    verPayText.textContent = `VER ${CashOverLocalization.translate("pay")}`;
+    verPayText.textContent = `VER ${CashOverLocalization.translate(
+      "pay",
+      language
+    )}`;
 
     // Append elements to button content
     buttonContent.appendChild(cashText);
@@ -43,14 +51,18 @@ class CashOverPayButton extends HTMLElement {
 
     // Append content to button
     cashOverButton.appendChild(buttonContent);
-
+    const isDarkTheme = theme === "dark";
     // Apply styles from constants
-    cashOverButton.style.backgroundColor = ButtonDefaults.backgroundColor;
-    cashOverButton.style.color = ButtonDefaults.textColor;
-    cashOverButton.style.fontSize = ButtonDefaults.fontSize;
+    cashOverButton.style.backgroundColor = isDarkTheme
+      ? ButtonDefaults.darkBackgroundColor
+      : ButtonDefaults.lightBackgroundColor;
+    cashOverButton.style.color = isDarkTheme
+      ? ButtonDefaults.darkTextColor
+      : ButtonDefaults.lightTextColor;
+    cashOverButton.style.fontSize = fontSize;
     cashOverButton.style.fontWeight = ButtonDefaults.fontWeight;
     cashOverButton.style.padding = ButtonDefaults.padding;
-    cashOverButton.style.borderRadius = ButtonDefaults.borderRadius;
+    cashOverButton.style.borderRadius = borderRadius;
     cashOverButton.style.border = ButtonDefaults.border;
     cashOverButton.style.cursor = ButtonDefaults.cursor;
 

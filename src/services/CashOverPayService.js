@@ -1,4 +1,5 @@
 import pako from "pako";
+import { apiDefaults } from "../constants";
 
 export class CashOverPayService {
   static instance = new CashOverPayService();
@@ -42,9 +43,7 @@ export class CashOverPayService {
     const base64QueryParams = btoa(
       String.fromCharCode(...new Uint8Array(compressed))
     );
-    let url =
-      `https://staging.cashover.money/pay?` + `session=${base64QueryParams}`;
-    console.log(`This is url: ${url}`);
+    let url = `${apiDefaults.baseWebUrl}/pay?` + `session=${base64QueryParams}`;
     window.open(url, "_blank");
   }
 }
