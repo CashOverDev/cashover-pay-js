@@ -1,6 +1,7 @@
 import { CashOverPayService } from "../services/CashOverPayService";
 import { ButtonDefaults } from "../constants";
 import { CashOverLocalization } from "../utils/localization";
+// imported here to force rollup packaging to include the asset, try to find another solution
 import cashOverLogo from "../assets/cashover_logo.png";
 
 class CashOverPayButton extends HTMLElement {
@@ -53,15 +54,18 @@ class CashOverPayButton extends HTMLElement {
     cashOverButton.style.border = ButtonDefaults.border;
     cashOverButton.style.cursor = ButtonDefaults.cursor;
 
+    const payload = {
+      merchantUsername: this.getAttribute("merchantUsername"),
+      storeUsername: this.getAttribute("storeUsername"),
+      amount: this.getAttribute("amount"),
+      currency: this.getAttribute("currency"),
+      metadata: this.getAttribute("metadata"),
+      webhookIds: this.getAttribute("webhookIds"),
+    };
+
     // Payment click handler
     cashOverButton.addEventListener("click", () => {
-      CashOverPayService.instance.pay({
-        merchantUsername: this.getAttribute("merchantUsername"),
-        storeUsername: this.getAttribute("storeUsername"),
-        amount: parseFloat(this.getAttribute("amount")),
-        currency: this.getAttribute("currency"),
-        metadata: JSON.parse(this.getAttribute("metadata") || "{}"),
-      });
+      CashOverPayService.instance.pay(payload);
     });
 
     this.shadowRoot.appendChild(cashOverButton);

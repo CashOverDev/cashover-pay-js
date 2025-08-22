@@ -1,5 +1,7 @@
 import terser from "@rollup/plugin-terser";
 import url from "@rollup/plugin-url";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
 
 export default {
   input: "src/index.js",
@@ -23,5 +25,7 @@ export default {
       emitFiles: true,
       fileName: "[name][extname]", // Keep original filename
     }),
+    commonjs(),
+    resolve(),
   ],
 };

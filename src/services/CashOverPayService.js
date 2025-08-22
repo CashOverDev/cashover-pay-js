@@ -1,3 +1,5 @@
+import pako from "pako";
+
 export class CashOverPayService {
   static instance = new CashOverPayService();
 
@@ -8,14 +10,40 @@ export class CashOverPayService {
     CashOverPayService._instance = this;
   }
 
-  pay({ merchantUsername, storeUsername, amount, currency, metadata = {} }) {
-    metadata.storeUserName = storeUsername;
+  pay({
+    merchantUsername,
+    storeUsername,
+    amount,
+    currency,
+    webhookIds,
+    metadata = "{}",
+  }) {
+    const jsonMetaData = JSON.parse(metadata);
+    jsonMetaData.storeUserName = storeUsername;
+    // validate that metadata is a valid json
 
-    const encodedMetadata = encodeURIComponent(JSON.stringify(metadata));
+    // stringify it to be query param friendly
+    const encodedMetadata = JSON.stringify(jsonMetaData);
+    let queryParams = `userName=${merchantUsername}&amount=${parseFloat(
+      amount
+    )}&currency=${currency}&metadata=${encodedMetadata}`;
+    if (webhookIds) {
+      const webhookIdsList = [];
+      if (webhookIds && webhookIds.trim() !== "") {
+        webhookIds.split(",").map((id) => webhookIdsList.push(id.trim()));
+      }
 
-    const url =
-      `https://staging.cashover.money/pay?` +
-      `userName=${merchantUsername}&amount=${amount}&currency=${currency}&metadata=${encodedMetadata}`;
+      queryParams += `&webhookIds=${JSON.stringify(webhookIdsList)}`;
+    }
+    // gzip compress using pako
+    const compressed = pako.gzip(queryParams);
+
+    // base64 encode
+    const base64QueryParams = btoa(
+      String.fromCharCode(...new Uint8Array(compressed))
+    );
+    let url =
+      `https://staging.cashover.money/pay?` + `session=${base64QueryParams}`;
     console.log(`This is url: ${url}`);
     window.open(url, "_blank");
   }
