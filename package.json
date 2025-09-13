@@ -1,10 +1,12 @@
 {
   "name": "cashover-pay",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "generate-sri": "node scripts/generate-sri.js",
+    "deploy": "node scripts/deploy.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,8 @@
     "rollup": "^2.79.2"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.17.0",
+    "dotenv": "^17.2.1",
     "pako": "^2.1.0"
   }
 }

@@ -390,8 +390,12 @@
             </div>
           </div>
 
-          <!-- Include the built SDK -->
-          <script src="../dist/cashover.min.js"></script>
+          <!-- Include the CashOver Pay SDK -->
+          <script
+            src="https://cdn.cashover.money/js-sdk/0.1.0/cashover.js"
+            integrity="sha384-QAb2Rqrh1oNccLEO0k724DTi+iphADm918RUS5NfAafxvvY/TPvRAPIQ1zILwQ1T"
+            crossorigin="anonymous"
+          ></script>
 
           <div
             style="display: flex; justify-content: center; align-items: center"
@@ -401,7 +405,7 @@
               storeUsername="al.beik"
               amount="43.18"
               currency="USD"
-              webhookIds="id1,id2"
+              webhookIds='["id1", "id2"]'
               metadata='{"orderId":"A1001", "email":"testEmail@mail.com", "country":"", "postalCode":"1"}'
               language="en"
               theme="light"

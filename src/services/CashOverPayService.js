@@ -29,12 +29,8 @@ export class CashOverPayService {
       amount
     )}&currency=${currency}&metadata=${encodedMetadata}`;
     if (webhookIds) {
-      const webhookIdsList = [];
-      if (webhookIds && webhookIds.trim() !== "") {
-        webhookIds.split(",").map((id) => webhookIdsList.push(id.trim()));
-      }
-
-      queryParams += `&webhookIds=${JSON.stringify(webhookIdsList)}`;
+      const encodedWebhookIds = JSON.stringify(jsonMetaData);
+      queryParams += `&webhookIds=${encodedWebhookIds}`;
     }
     // gzip compress using pako
     const compressed = pako.gzip(queryParams);
