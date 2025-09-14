@@ -125,44 +125,6 @@ Simply add the CashOver payment button to your HTML:
 </cashover-pay-button>
 ```
 
-### Dynamic Payment Button with JavaScript
-
-You can also create and configure the payment button dynamically:
-
-```javascript
-// Create payment button dynamically
-function createPaymentButton(orderData) {
-  const payButton = document.createElement("cashover-pay-button");
-
-  payButton.setAttribute("merchantUsername", "your_merchant");
-  payButton.setAttribute("storeUsername", "your_store");
-  payButton.setAttribute("amount", orderData.total);
-  payButton.setAttribute("currency", "USD");
-  payButton.setAttribute(
-    "metadata",
-    JSON.stringify({
-      orderId: orderData.id,
-      customerId: orderData.customerId,
-      items: orderData.items,
-    })
-  );
-  payButton.setAttribute("language", "en");
-  payButton.setAttribute("theme", "light");
-
-  document.getElementById("payment-container").appendChild(payButton);
-}
-
-// Example usage
-const orderData = {
-  id: "ORD-001",
-  total: 149.99,
-  customerId: "CUST-456",
-  items: ["item1", "item2"],
-};
-
-createPaymentButton(orderData);
-```
-
 ## SRI Hashes Reference
 
 For enhanced security in production, use the SRI hashes below:
