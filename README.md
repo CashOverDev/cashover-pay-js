@@ -34,7 +34,7 @@ Add the CashOver SDK to your web application via CDN:
 ```html
 <script
   src="https://cdn.cashover.money/js-sdk/0.1.0/cashover.min.js"
-  integrity="sha384-wsxBQKs56ap0SQmua1ulua0H/FMmsnvAFrkW4wf133dkaHKVq4ExpSEFuybS3XJ2"
+  integrity="sha384-wtJ+ke0V0tyCdjqWibq6vvfT233WOcS5EAStjgG3MaVnbnOQv5QuQwDCW054nlIz"
   crossorigin="anonymous"
 ></script>
 ```
@@ -44,7 +44,7 @@ Add the CashOver SDK to your web application via CDN:
 ```html
 <script
   src="https://cdn.cashover.money/js-sdk/latest/cashover.js"
-  integrity="sha384-QAb2Rqrh1oNccLEO0k724DTi+iphADm918RUS5NfAafxvvY/TPvRAPIQ1zILwQ1T"
+  integrity="sha384-ZswI/MwwgvCyrUbBY/+7DW1yyUfqHDIdfQT8n+CaRB5IWTFrNBYXXrAMSRLYqSSW"
   crossorigin="anonymous"
 ></script>
 ```
