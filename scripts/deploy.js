@@ -1,6 +1,7 @@
 const { Storage } = require("@google-cloud/storage");
 const fs = require("fs");
 const path = require("path");
+const { globSync } = require("glob");
 require("dotenv").config();
 
 async function deploySdk() {
@@ -40,6 +41,20 @@ async function deploySdk() {
     { local: "dist/cashover.min.js", remote: "js-sdk/latest/cashover.min.js" },
     { local: "dist/integrity.json", remote: "js-sdk/latest/integrity.json" },
   ];
+  // Find all files under dist/assets (images, icons, etc.)
+  const assetFiles = globSync("dist/assets/**/*.*", { nodir: true });
+
+  for (const assetPath of assetFiles) {
+    // Get relative path *after* dist/, e.g. "assets/logo.png"
+    const relative = path.relative("dist", assetPath);
+
+    // Upload under versioned path
+    filesToUpload.push({
+      local: assetPath,
+      remote: `js-sdk/${version}/${relative}`,
+    });
+    // assets are not pushed to latest as they are always loaded from a versioned path in the code
+  }
 
   try {
     for (const file of filesToUpload) {
