@@ -131,8 +131,8 @@ For enhanced security in production, use the SRI hashes below:
 
 | Version    | cashover.js Hash                                                          | cashover.min.js Hash                                                      |
 | ---------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| v0.1.0     | `sha384-QAb2Rqrh1oNccLEO0k724DTi+iphADm918RUS5NfAafxvvY/TPvRAPIQ1zILwQ1T` | `sha384-wsxBQKs56ap0SQmua1ulua0H/FMmsnvAFrkW4wf133dkaHKVq4ExpSEFuybS3XJ2` |
-| **latest** | `sha384-QAb2Rqrh1oNccLEO0k724DTi+iphADm918RUS5NfAafxvvY/TPvRAPIQ1zILwQ1T` | `sha384-wsxBQKs56ap0SQmua1ulua0H/FMmsnvAFrkW4wf133dkaHKVq4ExpSEFuybS3XJ2` |
+| v0.1.0     | `sha384-ZswI/MwwgvCyrUbBY/+7DW1yyUfqHDIdfQT8n+CaRB5IWTFrNBYXXrAMSRLYqSSW` | `sha384-wtJ+ke0V0tyCdjqWibq6vvfT233WOcS5EAStjgG3MaVnbnOQv5QuQwDCW054nlIz` |
+| **latest** | `sha384-ZswI/MwwgvCyrUbBY/+7DW1yyUfqHDIdfQT8n+CaRB5IWTFrNBYXXrAMSRLYqSSW` | `sha384-wtJ+ke0V0tyCdjqWibq6vvfT233WOcS5EAStjgG3MaVnbnOQv5QuQwDCW054nlIz` |
 
 > ⚠️ **Important**: The `latest` version SRI hash changes with every release. Do not use SRI with the latest version in production.
 
