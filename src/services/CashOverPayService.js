@@ -29,7 +29,7 @@ export class CashOverPayService {
       amount
     )}&currency=${currency}&metadata=${encodedMetadata}`;
     if (webhookIds) {
-      const encodedWebhookIds = JSON.stringify(jsonMetaData);
+      const encodedWebhookIds = JSON.stringify(webhookIds);
       queryParams += `&webhookIds=${encodedWebhookIds}`;
     }
     // gzip compress using pako
